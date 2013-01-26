@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ML.AccessControl.DAL", "ML.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ML.AccessControl.BUS", "ML.AccessControl.BUS\ML.AccessControl.BUS.csproj", "{B7C2BB66-90A3-4679-9EDA-74C0C1168408}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ML.AccessControl.DAL.SQLite", "ML.AccessControl.DAL.SQLite\ML.AccessControl.DAL.SQLite.csproj", "{8439705C-3DF6-44EC-B4B0-C07B3FAA371A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ML.AccessControl.DAL.SQLServer", "ML.AccessControl.DAL.SQLServer\ML.AccessControl.DAL.SQLServer.csproj", "{18FB0996-A6E7-49FE-AC5B-D87B009ABC5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{B7C2BB66-90A3-4679-9EDA-74C0C1168408}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C2BB66-90A3-4679-9EDA-74C0C1168408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C2BB66-90A3-4679-9EDA-74C0C1168408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8439705C-3DF6-44EC-B4B0-C07B3FAA371A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8439705C-3DF6-44EC-B4B0-C07B3FAA371A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8439705C-3DF6-44EC-B4B0-C07B3FAA371A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8439705C-3DF6-44EC-B4B0-C07B3FAA371A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FB0996-A6E7-49FE-AC5B-D87B009ABC5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FB0996-A6E7-49FE-AC5B-D87B009ABC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FB0996-A6E7-49FE-AC5B-D87B009ABC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FB0996-A6E7-49FE-AC5B-D87B009ABC5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
