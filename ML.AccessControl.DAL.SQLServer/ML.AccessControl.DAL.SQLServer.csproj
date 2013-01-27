@@ -40,11 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBManager.cs" />
+    <Compile Include="DBSessions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ML.AccessControl.DAL\ML.AccessControl.DAL.csproj">
+      <Project>{D19A4837-1296-4987-ADF0-C134292E3DB2}</Project>
+      <Name>ML.AccessControl.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)ML.AccessControl.BUS\$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)ML.AccessControl.BUS\$(OutDir)
+copy $(TargetDir)$(TargetName).pdb $(SolutionDir)ML.AccessControl.BUS\$(OutDir)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
