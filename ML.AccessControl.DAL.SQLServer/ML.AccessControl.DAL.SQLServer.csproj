@@ -53,7 +53,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)ML.AccessControl.BUS\$(OutDir)
-copy $(TargetDir)$(TargetName).pdb $(SolutionDir)ML.AccessControl.BUS\$(OutDir)</PostBuildEvent>
+copy $(TargetDir)$(TargetName).pdb $(SolutionDir)ML.AccessControl.BUS\$(OutDir)
+copy $(TargetPath) $(SolutionDir)SampleWinForms\$(OutDir)
+copy $(TargetDir)$(TargetName).pdb $(SolutionDir)SampleWinForms\$(OutDir)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
