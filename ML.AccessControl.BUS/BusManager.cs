@@ -14,6 +14,7 @@ namespace ML.AccessControl.BUS
         private static AbsDBManager _dbStaticManager;
         private AbsDBManager _dbManager;
         private BusSessions _sessions;
+        private BusUsers _users;
 
         /// <summary>
         /// Business layer constructor
@@ -48,6 +49,16 @@ namespace ML.AccessControl.BUS
                 if (_sessions == null)
                     _sessions = new BusSessions(_bCacheDALAssembly ? _dbStaticManager : _dbManager);
                 return _sessions;
+            }
+        }
+
+        public BusUsers Users
+        {
+            get
+            {
+                if (_users == null)
+                    _users = new BusUsers(_bCacheDALAssembly ? _dbStaticManager : _dbManager);
+                return _users;
             }
         }
 

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ML.AccessControl.DAL
 {
-    public abstract class AbsDBSessions
+    public abstract class AbsDBSessions : AbsDBBase
     {
-        public abstract string CreateSession();
+        public AbsDBSessions(AbsDBManager pDBManager) : base(pDBManager) { }
     }
 }

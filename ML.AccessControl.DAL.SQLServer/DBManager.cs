@@ -9,19 +9,21 @@ namespace ML.AccessControl.DAL.SQLServer
     {
         private DBSessions _dbSessions = null;
 
-        public DBManager(string pConnectionString)
-            : base(pConnectionString)
-        {
-        }
+        public DBManager(string pConnectionString) : base(pConnectionString) { }
 
         public override AbsDBSessions Sessions
         {
             get
             {
                 if (_dbSessions == null)
-                    _dbSessions = new DBSessions();
+                    _dbSessions = new DBSessions(this);
                 return _dbSessions;
             }
+        }
+
+        public override AbsDBUsers Users
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

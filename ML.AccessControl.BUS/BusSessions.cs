@@ -8,13 +8,11 @@ namespace ML.AccessControl.BUS
 {
     public sealed class BusSessions : AbsBusBase
     {
-        internal BusSessions(AbsDBManager pDBManager) : base(pDBManager)
-        {
-        }
+        internal BusSessions(AbsDBManager pDBManager) : base(pDBManager) { }
 
-        public string CreateSession()
-        {
-            return _dbManager.Sessions.CreateSession();
-        }
+        //public string CreateSession()
+        //{
+        //    return _dbManager.Sessions.CreateSession();
+        //}
     }
 }

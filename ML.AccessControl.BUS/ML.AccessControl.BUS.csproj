@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AbsBusBase.cs" />
     <Compile Include="BusSessions.cs" />
+    <Compile Include="BusUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BusManager.cs" />
   </ItemGroup>

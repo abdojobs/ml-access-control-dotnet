@@ -7,9 +7,6 @@ namespace ML.AccessControl.DAL.SQLServer
 {
     internal sealed class DBSessions : AbsDBSessions
     {
-        public override string CreateSession()
-        {
-            return "Session Created";
-        }
+        public DBSessions(AbsDBManager pDBManager) : base(pDBManager) { }
     }
 }
