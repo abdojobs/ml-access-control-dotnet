@@ -18,8 +18,13 @@ namespace ML.AccessControl.BUS.Common
         public static readonly string EMAIL_RGX = @"^[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,4}$";
         public static readonly int EMAIL_LEN_MAX = 50;
         public static readonly int EMAIL_LEN_MIN = 6;
-        public static readonly string FIRSTNAME_RGX = @"^[\w- '().]{1,20}$";
-        public static readonly string LASTNAME_RGX = @"^[\w- '().]{1,20}$";
+        public static readonly string PASSWORD_RGX = @"^[\S ]+$";
+        public static readonly int PASSWORD_LEN_MAX = 20;
+        public static readonly int PASSWORD_LEN_MIN = 6;
+        public static readonly string NAME_RGX = @"^[\w- '().]$";
+        public static readonly int NAME_LEN_MAX = 20;
+        public static readonly int NAME_LEN_MIN = 1;
+
         
 
 

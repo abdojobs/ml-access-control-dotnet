@@ -46,5 +46,31 @@ namespace ML.AccessControl.BUS
 
             return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
         }
+
+        public bool IsPersonNameValid(string pName, out MLAC_Error_Messages pErrorMessage)
+        {
+            pErrorMessage = MLAC_Error_Messages._NO_ERROR;
+            pName = pName.Trim();
+
+            if (pName.Length < Config.NAME_LEN_MIN)
+                pErrorMessage = MLAC_Error_Messages.ERR_NAME_TOOSHORT;
+            else if (pName.Length > Config.NAME_LEN_MAX)
+                pErrorMessage = MLAC_Error_Messages.ERR_NAME_TOOLONG;
+
+            return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
+        }
+
+        public bool IsPasswordValid(string pPassword, out MLAC_Error_Messages pErrorMessage)
+        {
+            pErrorMessage = MLAC_Error_Messages._NO_ERROR;
+            pPassword = pPassword.Trim();
+
+            if (pPassword.Length < Config.PASSWORD_LEN_MIN)
+                pErrorMessage = MLAC_Error_Messages.ERR_PASSWORD_TOOSHORT;
+            else if (pPassword.Length > Config.PASSWORD_LEN_MAX)
+                pErrorMessage = MLAC_Error_Messages.ERR_PASSWORD_TOOLONG;
+
+            return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
+        }
     }
 }

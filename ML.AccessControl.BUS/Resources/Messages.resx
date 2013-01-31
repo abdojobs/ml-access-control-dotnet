@@ -141,4 +141,22 @@
   <data name="ERR_1103" xml:space="preserve">
     <value>Email is not available</value>
   </data>
+  <data name="ERR_1200" xml:space="preserve">
+    <value>Invalid name</value>
+  </data>
+  <data name="ERR_1201" xml:space="preserve">
+    <value>Name is too short</value>
+  </data>
+  <data name="ERR_1202" xml:space="preserve">
+    <value>Name is too long</value>
+  </data>
+  <data name="ERR_1300" xml:space="preserve">
+    <value>Invalid password</value>
+  </data>
+  <data name="ERR_1301" xml:space="preserve">
+    <value>Password is too short</value>
+  </data>
+  <data name="ERR_1302" xml:space="preserve">
+    <value>Password is too long</value>
+  </data>
 </root>

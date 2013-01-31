@@ -40,7 +40,7 @@ namespace SampleWinForms
                 true).ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void IsLoginNameAvailableAndValid_Click(object sender, EventArgs e)
         {
             MLAC_Error_Messages err;
             if (_BLL.Registration.IsLoginNameAvailableAndValid(tbIsLoginNameAvailableAndValid1.Text, out err))
@@ -49,10 +49,28 @@ namespace SampleWinForms
                 tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void IsEmailAvailableAndValid_Click(object sender, EventArgs e)
         {
             MLAC_Error_Messages err;
             if (_BLL.Registration.IsEmailAvailableAndValid(tbIsEmailAvailableAndValid1.Text, out err))
+                tbResult.Text = "OK";
+            else
+                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
+        }
+
+        private void IsPersonNameValid_Click(object sender, EventArgs e)
+        {
+            MLAC_Error_Messages err;
+            if (_BLL.Registration.IsPersonNameValid(tbIsPersonNameValid1.Text, out err))
+                tbResult.Text = "OK";
+            else
+                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
+        }
+
+        private void IsPasswordValid_Click(object sender, EventArgs e)
+        {
+            MLAC_Error_Messages err;
+            if (_BLL.Registration.IsPasswordValid(tbIsPasswordValid1.Text, out err))
                 tbResult.Text = "OK";
             else
                 tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);

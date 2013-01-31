@@ -131,5 +131,59 @@ namespace ML.AccessControl.BUS.Resources {
                 return ResourceManager.GetString("ERR_1103", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid name.
+        /// </summary>
+        internal static string ERR_1200 {
+            get {
+                return ResourceManager.GetString("ERR_1200", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name is too short.
+        /// </summary>
+        internal static string ERR_1201 {
+            get {
+                return ResourceManager.GetString("ERR_1201", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name is too long.
+        /// </summary>
+        internal static string ERR_1202 {
+            get {
+                return ResourceManager.GetString("ERR_1202", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid password.
+        /// </summary>
+        internal static string ERR_1300 {
+            get {
+                return ResourceManager.GetString("ERR_1300", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password is too short.
+        /// </summary>
+        internal static string ERR_1301 {
+            get {
+                return ResourceManager.GetString("ERR_1301", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password is too long.
+        /// </summary>
+        internal static string ERR_1302 {
+            get {
+                return ResourceManager.GetString("ERR_1302", resourceCulture);
+            }
+        }
     }
 }
