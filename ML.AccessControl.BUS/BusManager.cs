@@ -14,6 +14,7 @@ namespace ML.AccessControl.BUS
         private static AbsDBManager _dbStaticManager;
         private AbsDBManager _dbManager;
         private BusSessions _sessions;
+        private BusRegistration _registration;
         private BusUsers _users;
 
         /// <summary>
@@ -52,6 +53,16 @@ namespace ML.AccessControl.BUS
             }
         }
 
+        public BusRegistration Registration
+        {
+            get
+            {
+                if (_registration == null)
+                    _registration = new BusRegistration(_bCacheDALAssembly ? _dbStaticManager : _dbManager);
+                return _registration;
+            }
+        }
+
         public BusUsers Users
         {
             get
@@ -60,6 +71,14 @@ namespace ML.AccessControl.BUS
                     _users = new BusUsers(_bCacheDALAssembly ? _dbStaticManager : _dbManager);
                 return _users;
             }
+        }
+
+        public string GetErrorMessage(int pMessageId)
+        {
+            string sResult = null;
+            sResult = Resources.Messages.ResourceManager.GetString("ERR_" + pMessageId.ToString());
+
+            return sResult;
         }
 
     }

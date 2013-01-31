@@ -10,6 +10,8 @@ using ML.AccessControl.BUS;
 using System.Data.Common;
 using System.IO;
 using SampleWinForms.Properties;
+using ML.AccessControl.BUS.Common;
+using System.Threading;
 
 namespace SampleWinForms
 {
@@ -19,6 +21,7 @@ namespace SampleWinForms
 
         public MainForm()
         {
+            //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ar");
             _BLL = new BusManager(
                Type.GetType("ML.AccessControl.DAL.SQLite.DBManager, ML.AccessControl.DAL.SQLite", true),
                 "Data Source=" + Settings.Default.SQLiteDBFile + ";Pooling=true;FailIfMissing=true",
@@ -35,6 +38,24 @@ namespace SampleWinForms
                 Utils.GenerateRandomChars(5, 10),
                 Utils.GenerateRandomChars(5,10) + "@" + Utils.GenerateRandomChars(4,8) + ".com",
                 true).ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MLAC_Error_Messages err;
+            if (_BLL.Registration.IsLoginNameAvailableAndValid(tbIsLoginNameAvailableAndValid1.Text, out err))
+                tbResult.Text = "OK";
+            else
+                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MLAC_Error_Messages err;
+            if (_BLL.Registration.IsEmailAvailableAndValid(tbIsEmailAvailableAndValid1.Text, out err))
+                tbResult.Text = "OK";
+            else
+                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
         }
     }
 }

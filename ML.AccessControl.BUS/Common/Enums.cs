@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ML.AccessControl.BUS.Common
+{
+    public enum MLAC_Error_Messages
+    {
+        _NO_ERROR = 0,
+
+        ERR_LOGINNAME_INVALID = 1000,
+        ERR_LOGINNAME_TOOSHORT = 1001,
+        ERR_LOGINNAME_TOOLONG = 1002,
+        ERR_LOGINNAME_UNAVAILABLE = 1003,
+        ERR_EMAIL_INVALID = 1100,
+        ERR_EMAIL_TOOSHORT = 1101,
+        ERR_EMAIL_TOOLONG = 1102,
+        ERR_EMAIL_UNAVAILABLE = 1103,
+    }
+}

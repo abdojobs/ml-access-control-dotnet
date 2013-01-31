@@ -10,6 +10,38 @@ namespace ML.AccessControl.DAL.SQLite
     {
         public DBUsers(AbsDBManager pDBManager) : base(pDBManager) { }
 
+        public override bool IsLoginNameAvailable(string pLoginName)
+        {
+            bool bResult = false;
+            using (SQLiteConnection cnn = new SQLiteConnection(_dbManager.ConnectionString))
+            {
+                using (SQLiteCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) FROM [mlac_tbl_users] WHERE LOWER([login_name])=@pLoginName;";
+                    cmd.Parameters.Add(new SQLiteParameter("@pLoginName", pLoginName.ToLower()));
+                    cnn.Open();
+                    bResult = (Convert.ToInt32(cmd.ExecuteScalar()) == 0);
+                }
+            }
+            return bResult;
+        }
+
+        public override bool IsEmailAvailable(string pEmail)
+        {
+            bool bResult = false;
+            using (SQLiteConnection cnn = new SQLiteConnection(_dbManager.ConnectionString))
+            {
+                using (SQLiteCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) FROM [mlac_tbl_users] WHERE LOWER([email])=@pEmail;";
+                    cmd.Parameters.Add(new SQLiteParameter("@pEmail", pEmail.ToLower()));
+                    cnn.Open();
+                    bResult = (Convert.ToInt32(cmd.ExecuteScalar()) == 0);
+                }
+            }
+            return bResult;
+        }
+
         public override int CreateUser(string pLoginName, string pPasswordHash, string pFirstName, string pLastName, string pEmail, DateTime pCreatedOn, bool pIsActive)
         {
             int iResult = -1;

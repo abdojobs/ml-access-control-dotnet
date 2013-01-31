@@ -17,7 +17,10 @@ namespace SampleWinForms
 
             for (int i = 0; i < iLength; i++)
             {
-                sResult += (char)(rnd.Next((int)'a',(int)'z'));
+                if(rnd.Next(2) == 1)
+                    sResult += (char)(rnd.Next((int)'a',(int)'z'));
+                else
+                    sResult += (char)(rnd.Next((int)'A', (int)'Z'));
             }
 
             return sResult;
