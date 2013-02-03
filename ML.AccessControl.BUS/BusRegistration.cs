@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ML.AccessControl.DAL;
-using ML.AccessControl.DAL.Common.Enums;
 using System.Text.RegularExpressions;
 using ML.AccessControl.BUS.Common;
 
@@ -11,7 +10,7 @@ namespace ML.AccessControl.BUS
 {
     public sealed class BusRegistration : AbsBusBase
     {
-        internal BusRegistration(AbsDBManager pDBManager) : base(pDBManager) { }
+        internal BusRegistration(BusManager pBusManager, AbsDBManager pDBManager) : base(pBusManager, pDBManager) { }
 
         public bool IsLoginNameAvailableAndValid(string pLoginName, out MLAC_Error_Messages pErrorMessage)
         {

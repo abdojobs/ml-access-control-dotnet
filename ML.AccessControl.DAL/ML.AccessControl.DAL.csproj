@@ -44,6 +44,8 @@
     <Compile Include="AbsDBSessions.cs" />
     <Compile Include="AbsDBUsers.cs" />
     <Compile Include="AbsDBBase.cs" />
+    <Compile Include="AbsFactory.cs" />
+    <Compile Include="AbsTransaction.cs" />
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

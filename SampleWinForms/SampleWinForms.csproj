@@ -86,8 +86,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)ML.AccessControl.DAL.SQLite\$(OutDir)
-copy $(SolutionDir)ML.AccessControl.DAL.SQLServer\$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>copy "$(SolutionDir)ML.AccessControl.DAL.SQLite\$(OutDir)"
+copy "$(SolutionDir)ML.AccessControl.DAL.SQLServer\$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

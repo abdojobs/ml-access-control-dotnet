@@ -8,7 +8,7 @@ namespace ML.AccessControl.BUS
 {
     public sealed class BusUsers : AbsBusBase
     {
-        internal BusUsers(AbsDBManager pDBManager) : base(pDBManager) { }
+        internal BusUsers(BusManager pBusManager, AbsDBManager pDBManager) : base(pBusManager, pDBManager) { }
 
         public int CreateUser(string pLoginName, string pPasswordHash, string pFirstName, string pLastName, string pEmail, bool pIsActive)
         {

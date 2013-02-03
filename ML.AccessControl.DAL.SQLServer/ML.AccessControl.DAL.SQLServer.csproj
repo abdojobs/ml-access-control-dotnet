@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBFactory.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="DBSessions.cs" />
+    <Compile Include="DBTransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

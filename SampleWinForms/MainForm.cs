@@ -23,9 +23,8 @@ namespace SampleWinForms
         {
             //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ar");
             _BLL = new BusManager(
-               Type.GetType("ML.AccessControl.DAL.SQLite.DBManager, ML.AccessControl.DAL.SQLite", true),
-                "Data Source=" + Settings.Default.SQLiteDBFile + ";Pooling=true;FailIfMissing=true",
-               true);
+               Type.GetType("ML.AccessControl.DAL.SQLite.DBFactory, ML.AccessControl.DAL.SQLite", true),
+                "Data Source=" + Settings.Default.SQLiteDBFile + ";Pooling=true;FailIfMissing=true");
             InitializeComponent();
         }
 

@@ -7,20 +7,9 @@ namespace ML.AccessControl.DAL
 {
     public abstract class AbsDBManager
     {
-        protected string _sConnectionString = "";
+        public abstract string ConnectionString { get; }
 
-        public AbsDBManager(string pConnectionString)
-        {
-            _sConnectionString = pConnectionString;
-        }
-
-        public string ConnectionString
-        {
-            get
-            {
-                return _sConnectionString;
-            }
-        }
+        public abstract AbsTransaction BeginTransaction();
 
         public abstract AbsDBSessions Sessions { get; }
         public abstract AbsDBUsers Users { get; }

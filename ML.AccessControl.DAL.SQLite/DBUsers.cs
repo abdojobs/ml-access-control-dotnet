@@ -13,7 +13,7 @@ namespace ML.AccessControl.DAL.SQLite
         public override bool IsLoginNameAvailable(string pLoginName)
         {
             bool bResult = false;
-            using (SQLiteConnection cnn = new SQLiteConnection(_dbManager.ConnectionString))
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
             {
                 using (SQLiteCommand cmd = cnn.CreateCommand())
                 {
@@ -29,7 +29,7 @@ namespace ML.AccessControl.DAL.SQLite
         public override bool IsEmailAvailable(string pEmail)
         {
             bool bResult = false;
-            using (SQLiteConnection cnn = new SQLiteConnection(_dbManager.ConnectionString))
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
             {
                 using (SQLiteCommand cmd = cnn.CreateCommand())
                 {
@@ -46,7 +46,7 @@ namespace ML.AccessControl.DAL.SQLite
         {
             int iResult = -1;
 
-            using (SQLiteConnection cnn = new SQLiteConnection(_dbManager.ConnectionString))
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
             {
                 using (SQLiteCommand cmd = cnn.CreateCommand())
                 {

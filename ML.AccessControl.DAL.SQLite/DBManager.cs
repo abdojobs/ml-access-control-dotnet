@@ -2,15 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SQLite;
 
 namespace ML.AccessControl.DAL.SQLite
 {
     internal sealed class DBManager : AbsDBManager
     {
+        private string _sConnectionString;
+        private DBTransaction _transaction = null;
         private DBSessions _dbSessions = null;
         private DBUsers _dbUsers = null;
 
-        public DBManager(string pConnectionString) : base(pConnectionString) { }
+        internal DBManager(string pConnectionString)
+        {
+            _sConnectionString = pConnectionString;
+        }
+
+        public override string ConnectionString
+        {
+            get { return _sConnectionString; }
+        }
+
+        public override AbsTransaction BeginTransaction()
+        {
+            if (_transaction != null && !_transaction.IsDisposed)
+                throw new Exception("Transaction already in progress");
+            SQLiteConnection cnn = new SQLiteConnection(_sConnectionString);
+            cnn.Open();
+            _transaction = new DBTransaction(cnn.BeginTransaction());
+            return _transaction;
+        }
+
+        internal ConnectionWrapper GetConnection()
+        {
+            if (_transaction != null && !_transaction.IsDisposed)
+                return new ConnectionWrapper(_transaction);
+            else
+                return new ConnectionWrapper(new SQLiteConnection(_sConnectionString));
+        }
 
         public override AbsDBSessions Sessions
         {
