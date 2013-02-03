@@ -10,7 +10,7 @@ namespace ML.AccessControl.BUS
 {
     public sealed class BusRegistration : AbsBusBase
     {
-        internal BusRegistration(BusManager pBusManager, AbsDBManager pDBManager) : base(pBusManager, pDBManager) { }
+        internal BusRegistration(BusManager pBusManager, AbsManager pDBManager) : base(pBusManager, pDBManager) { }
 
         public bool IsLoginNameAvailableAndValid(string pLoginName, out MLAC_Error_Messages pErrorMessage)
         {

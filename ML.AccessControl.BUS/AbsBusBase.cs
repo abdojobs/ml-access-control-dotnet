@@ -8,10 +8,10 @@ namespace ML.AccessControl.BUS
 {
     public abstract class AbsBusBase
     {
-        protected AbsDBManager _dbManager;
+        protected AbsManager _dbManager;
         protected BusManager _busManager;
 
-        protected AbsBusBase(BusManager pBusManager, AbsDBManager pDBManager)
+        protected AbsBusBase(BusManager pBusManager, AbsManager pDBManager)
         {
             _dbManager = pDBManager;
             _busManager = pBusManager;

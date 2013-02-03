@@ -5,11 +5,11 @@ using System.Text;
 
 namespace ML.AccessControl.DAL
 {
-    public abstract class AbsDBBase
+    public abstract class _AbsDBBase
     {
-        protected AbsDBManager _dbManager;
+        protected AbsManager _dbManager;
 
-        public AbsDBBase(AbsDBManager pDBManager)
+        public _AbsDBBase(AbsManager pDBManager)
         {
             _dbManager = pDBManager;
         }

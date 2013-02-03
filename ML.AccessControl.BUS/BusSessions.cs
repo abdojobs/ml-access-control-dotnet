@@ -8,7 +8,7 @@ namespace ML.AccessControl.BUS
 {
     public sealed class BusSessions : AbsBusBase
     {
-        internal BusSessions(BusManager pBusManager, AbsDBManager pDBManager) : base(pBusManager, pDBManager) { }
+        internal BusSessions(BusManager pBusManager, AbsManager pDBManager) : base(pBusManager, pDBManager) { }
 
         //public string CreateSession()
         //{

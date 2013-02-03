@@ -11,7 +11,7 @@ namespace ML.AccessControl.BUS
     public sealed class BusManager
     {
         private static AbsFactory _dbFactory;
-        private AbsDBManager _dbManager;
+        private AbsManager _dbManager;
         private BusSessions _sessions;
         private BusRegistration _registration;
         private BusUsers _users;

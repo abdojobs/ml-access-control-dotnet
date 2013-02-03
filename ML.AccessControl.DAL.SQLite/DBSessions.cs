@@ -7,6 +7,6 @@ namespace ML.AccessControl.DAL.SQLite
 {
     internal sealed class DBSessions : AbsDBSessions
     {
-        public DBSessions(AbsDBManager pDBManager) : base(pDBManager) { }
+        public DBSessions(AbsManager pDBManager) : base(pDBManager) { }
     }
 }

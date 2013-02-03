@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ML.AccessControl.DAL
 {
-    public abstract class AbsDBUsers : AbsDBBase
+    public abstract class AbsDBUsers : _AbsDBBase
     {
-        public AbsDBUsers(AbsDBManager pDBManager) : base(pDBManager) { }
+        public AbsDBUsers(AbsManager pDBManager) : base(pDBManager) { }
 
         public abstract bool IsLoginNameAvailable(string pLoginName);
         public abstract bool IsEmailAvailable(string pEmail);

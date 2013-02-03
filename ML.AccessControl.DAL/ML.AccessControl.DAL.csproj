@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbsDBManager.cs" />
+    <Compile Include="AbsManager.cs" />
     <Compile Include="AbsDBSessions.cs" />
     <Compile Include="AbsDBUsers.cs" />
-    <Compile Include="AbsDBBase.cs" />
+    <Compile Include="_AbsDBBase.cs" />
     <Compile Include="AbsFactory.cs" />
     <Compile Include="AbsTransaction.cs" />
     <Compile Include="Common\Enums.cs" />

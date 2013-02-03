@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ML.AccessControl.DAL
 {
-    public abstract class AbsDBManager
+    public abstract class AbsManager
     {
         public abstract string ConnectionString { get; }
 

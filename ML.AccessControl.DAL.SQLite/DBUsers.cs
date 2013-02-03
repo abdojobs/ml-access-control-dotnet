@@ -8,7 +8,7 @@ namespace ML.AccessControl.DAL.SQLite
 {
     internal sealed class DBUsers : AbsDBUsers
     {
-        public DBUsers(AbsDBManager pDBManager) : base(pDBManager) { }
+        public DBUsers(AbsManager pDBManager) : base(pDBManager) { }
 
         public override bool IsLoginNameAvailable(string pLoginName)
         {

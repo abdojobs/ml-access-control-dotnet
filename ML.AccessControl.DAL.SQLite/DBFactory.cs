@@ -7,7 +7,7 @@ namespace ML.AccessControl.DAL.SQLite
 {
     internal sealed class DBFactory : AbsFactory
     {
-        public override AbsDBManager CreateDBManager(string pConnectionString)
+        public override AbsManager CreateDBManager(string pConnectionString)
         {
             return new DBManager(pConnectionString);
         }

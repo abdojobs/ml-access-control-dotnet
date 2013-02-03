@@ -11,6 +11,6 @@ namespace ML.AccessControl.DAL
     /// </summary>
     public abstract class AbsFactory
     {
-        public abstract AbsDBManager CreateDBManager(string pConnectionString);
+        public abstract AbsManager CreateDBManager(string pConnectionString);
     }
 }
