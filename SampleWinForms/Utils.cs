@@ -7,11 +7,11 @@ namespace SampleWinForms
 {
     internal static class Utils
     {
+        static Random rnd = new Random();
+
         internal static string GenerateRandomChars(int pLengthFrom, int pLengthTo)
         {
             string sResult = "";
-
-            Random rnd = new Random();
 
             int iLength = rnd.Next(pLengthFrom, pLengthTo);
 

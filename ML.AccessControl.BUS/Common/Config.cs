@@ -21,9 +21,10 @@ namespace ML.AccessControl.BUS.Common
         public static readonly string PASSWORD_RGX = @"^[\S ]+$";
         public static readonly int PASSWORD_LEN_MAX = 20;
         public static readonly int PASSWORD_LEN_MIN = 6;
-        public static readonly string NAME_RGX = @"^[\w- '().]$";
+        public static readonly string NAME_RGX = @"^[\w- '().]+$";
         public static readonly int NAME_LEN_MAX = 20;
         public static readonly int NAME_LEN_MIN = 1;
+        public static readonly bool NAME_REQUIRED = false;
 
         
 

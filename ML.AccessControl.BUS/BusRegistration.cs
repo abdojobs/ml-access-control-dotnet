@@ -5,6 +5,7 @@ using System.Text;
 using ML.AccessControl.DAL;
 using System.Text.RegularExpressions;
 using ML.AccessControl.BUS.Common;
+using ML.AccessControl.BUS.Common.Utils;
 
 namespace ML.AccessControl.BUS
 {
@@ -14,16 +15,12 @@ namespace ML.AccessControl.BUS
 
         public bool IsLoginNameAvailableAndValid(string pLoginName, out MLAC_Error_Messages pErrorMessage)
         {
-            pErrorMessage = MLAC_Error_Messages._NO_ERROR;
             pLoginName = pLoginName.Trim();
 
-            if (pLoginName.Length < Config.LOGINNAME_LEN_MIN)
-                pErrorMessage = MLAC_Error_Messages.ERR_LOGINNAME_TOOSHORT;
-            else if (pLoginName.Length > Config.LOGINNAME_LEN_MAX)
-                pErrorMessage = MLAC_Error_Messages.ERR_LOGINNAME_TOOLONG;
-            else if (!Regex.IsMatch(pLoginName, Config.LOGINNAME_RGX))
-                pErrorMessage = MLAC_Error_Messages.ERR_LOGINNAME_INVALID;
-            else if (!_dbManager.Users.IsLoginNameAvailable(pLoginName))
+            if (!_busManager.Users.IsLoginNameValid(pLoginName, out pErrorMessage))
+                return false;
+
+            if (!_dbManager.Users.IsLoginNameAvailable(pLoginName))
                 pErrorMessage = MLAC_Error_Messages.ERR_LOGINNAME_UNAVAILABLE;
 
             return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
@@ -31,16 +28,12 @@ namespace ML.AccessControl.BUS
 
         public bool IsEmailAvailableAndValid(string pEmail, out MLAC_Error_Messages pErrorMessage)
         {
-            pErrorMessage = MLAC_Error_Messages._NO_ERROR;
             pEmail = pEmail.Trim();
 
-            if (pEmail.Length < Config.EMAIL_LEN_MIN)
-                pErrorMessage = MLAC_Error_Messages.ERR_EMAIL_TOOSHORT;
-            else if (pEmail.Length > Config.EMAIL_LEN_MAX)
-                pErrorMessage = MLAC_Error_Messages.ERR_EMAIL_TOOLONG;
-            else if (!Regex.IsMatch(pEmail, Config.EMAIL_RGX))
-                pErrorMessage = MLAC_Error_Messages.ERR_EMAIL_INVALID;
-            else if (!_dbManager.Users.IsEmailAvailable(pEmail))
+            if (!_busManager.Users.IsEmailValid(pEmail, out pErrorMessage))
+                return false;
+
+            if (!_dbManager.Users.IsEmailAvailable(pEmail))
                 pErrorMessage = MLAC_Error_Messages.ERR_EMAIL_UNAVAILABLE;
 
             return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
@@ -48,28 +41,52 @@ namespace ML.AccessControl.BUS
 
         public bool IsPersonNameValid(string pName, out MLAC_Error_Messages pErrorMessage)
         {
-            pErrorMessage = MLAC_Error_Messages._NO_ERROR;
-            pName = pName.Trim();
-
-            if (pName.Length < Config.NAME_LEN_MIN)
-                pErrorMessage = MLAC_Error_Messages.ERR_NAME_TOOSHORT;
-            else if (pName.Length > Config.NAME_LEN_MAX)
-                pErrorMessage = MLAC_Error_Messages.ERR_NAME_TOOLONG;
-
-            return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
+            return _busManager.Users.IsPersonNameValid(pName.Trim(), out pErrorMessage);
         }
 
         public bool IsPasswordValid(string pPassword, out MLAC_Error_Messages pErrorMessage)
         {
-            pErrorMessage = MLAC_Error_Messages._NO_ERROR;
-            pPassword = pPassword.Trim();
+            return _busManager.Users.IsPasswordValid(pPassword, out pErrorMessage);
+        }
 
-            if (pPassword.Length < Config.PASSWORD_LEN_MIN)
-                pErrorMessage = MLAC_Error_Messages.ERR_PASSWORD_TOOSHORT;
-            else if (pPassword.Length > Config.PASSWORD_LEN_MAX)
-                pErrorMessage = MLAC_Error_Messages.ERR_PASSWORD_TOOLONG;
+        public bool CreateAccount(string pLoginName, string pPassword, string pFirstName, string pLastName, string pEmail, out MLAC_Error_Messages[] pErrorMessages)
+        {
+            List<MLAC_Error_Messages> lstErrors  = new List<MLAC_Error_Messages>();
+            MLAC_Error_Messages errorMessage;
 
-            return (pErrorMessage == MLAC_Error_Messages._NO_ERROR);
+            pLoginName = pLoginName.Trim();
+            pFirstName = pFirstName.Trim();
+            pLastName = pLastName.Trim();
+            pEmail = pEmail.Trim();
+
+            if (!_busManager.Users.IsPasswordValid(pPassword, out errorMessage))
+                lstErrors.Add(errorMessage);
+            if (!_busManager.Users.IsPersonNameValid(pFirstName, out errorMessage))
+                lstErrors.Add(errorMessage);
+            if (!_busManager.Users.IsPersonNameValid(pLastName, out errorMessage))
+                lstErrors.Add(errorMessage);
+            if (!_busManager.Users.IsLoginNameValid(pLoginName, out errorMessage))
+                lstErrors.Add(errorMessage);
+            if (!_busManager.Users.IsEmailValid(pEmail, out errorMessage))
+                lstErrors.Add(errorMessage);
+
+            using(AbsTransaction transaction = _dbManager.BeginTransaction())
+            {
+                if (!_dbManager.Users.IsLoginNameAvailable(pLoginName))
+                    lstErrors.Add(MLAC_Error_Messages.ERR_LOGINNAME_UNAVAILABLE);
+                if (!_dbManager.Users.IsEmailAvailable(pEmail))
+                    lstErrors.Add(MLAC_Error_Messages.ERR_EMAIL_UNAVAILABLE);
+
+                if (lstErrors.Count == 0)
+                {
+                    string sPasswordHash = PasswordHash.CreateHash(pPassword);
+                    _dbManager.Users.CreateUser(pLoginName, sPasswordHash, pFirstName, pLastName, pEmail, DateTime.Now, true);
+                    transaction.Commit();
+                }
+            }
+
+            pErrorMessages = lstErrors.ToArray();
+            return (pErrorMessages.Length == 0);
         }
     }
 }

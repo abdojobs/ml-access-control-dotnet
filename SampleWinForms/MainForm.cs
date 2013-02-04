@@ -30,13 +30,25 @@ namespace SampleWinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = _BLL.Users.CreateUser(
-                Utils.GenerateRandomChars(5, 10),
+            MLAC_Error_Messages[] arrErrors;
+            if(_BLL.Registration.CreateAccount(
+                Utils.GenerateRandomChars(5, 20),
                 Utils.GenerateRandomChars(20, 20),
-                Utils.GenerateRandomChars(5, 10),
-                Utils.GenerateRandomChars(5, 10),
-                Utils.GenerateRandomChars(5,10) + "@" + Utils.GenerateRandomChars(4,8) + ".com",
-                true).ToString();
+                Utils.GenerateRandomChars(5, 20),
+                Utils.GenerateRandomChars(5, 20),
+                Utils.GenerateRandomChars(5,20) + "@" + Utils.GenerateRandomChars(4,8) + ".com",
+                out arrErrors))
+            {
+                tbResult.Text = "OK";
+            }
+            else
+            {
+                tbResult.Text = "";
+                foreach (MLAC_Error_Messages err in arrErrors)
+                {
+                    tbResult.Text += "Error: " + err + ": " + _BLL.GetErrorMessage((int)err) + "\n\r";
+                }
+            }
         }
 
         private void IsLoginNameAvailableAndValid_Click(object sender, EventArgs e)
@@ -73,6 +85,29 @@ namespace SampleWinForms
                 tbResult.Text = "OK";
             else
                 tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
+        }
+
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            MLAC_Error_Messages[] arrErrors;
+            if (_BLL.Registration.CreateAccount(
+                tbLoginName.Text,
+                tbPassword.Text,
+                tbFirstName.Text,
+                tbLastName.Text,
+                tbEmail.Text,
+                out arrErrors))
+            {
+                tbResult.Text = "OK";
+            }
+            else
+            {
+                tbResult.Text = "";
+                foreach (MLAC_Error_Messages err in arrErrors)
+                {
+                    tbResult.Text += "Error: " + err + ": " + _BLL.GetErrorMessage((int)err) + "\r\n";
+                }
+            }
         }
     }
 }

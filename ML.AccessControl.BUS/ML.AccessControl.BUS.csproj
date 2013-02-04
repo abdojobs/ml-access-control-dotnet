@@ -45,6 +45,7 @@
     <Compile Include="BusUsers.cs" />
     <Compile Include="Common\Config.cs" />
     <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\Utils\PaswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BusManager.cs" />
     <Compile Include="BusRegistration.cs" />
