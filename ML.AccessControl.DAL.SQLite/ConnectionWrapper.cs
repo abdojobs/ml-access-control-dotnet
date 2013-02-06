@@ -26,7 +26,12 @@ namespace ML.AccessControl.DAL.SQLite
 
         internal SQLiteCommand CreateCommand()
         {
-            return _connection.CreateCommand();
+            if (_bIsDisposed)
+                throw new ObjectDisposedException(this.GetType().ToString());
+            SQLiteCommand cmd = _connection.CreateCommand();
+            if(_transaction != null && !_transaction.IsDisposed)
+                cmd.Transaction = _transaction.InnerTransaction;
+            return cmd;
         }
 
         internal void Open()
