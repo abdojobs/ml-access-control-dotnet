@@ -22,10 +22,9 @@ namespace SampleWinForms
         public MainForm()
         {
             //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ar");
-            _BLL = new BusManager(
-               Type.GetType("ML.AccessControl.DAL.SQLite.DBFactory, ML.AccessControl.DAL.SQLite", true),
-                "Data Source=" + Settings.Default.SQLiteDBFile + ";Pooling=true;FailIfMissing=true");
             InitializeComponent();
+            ddlDataProvider.SelectedIndex = 0;
+            ddlDataProvider_SelectedIndexChanged(null, EventArgs.Empty);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,6 +106,25 @@ namespace SampleWinForms
                 {
                     tbResult.Text += "Error: " + err + ": " + _BLL.GetErrorMessage((int)err) + "\r\n";
                 }
+            }
+        }
+
+        private void ddlDataProvider_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //don't cache the DAL assembly as we need to switch it at runtime
+            if (ddlDataProvider.SelectedIndex == 0)
+            {
+                _BLL = new BusManager(
+                   Type.GetType(Settings.Default.SQLiteDALType, true),
+                   Settings.Default.SQLiteConnectionString,
+                   false);
+            }
+            else if (ddlDataProvider.SelectedIndex == 1)
+            {
+                _BLL = new BusManager(
+                   Type.GetType(Settings.Default.SQLServerDALType, true),
+                   Settings.Default.SQLServerConnectionString,
+                   false);
             }
         }
     }

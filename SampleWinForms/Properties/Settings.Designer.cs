@@ -25,13 +25,50 @@ namespace SampleWinForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\DB\\ML.AccessControl.db")]
-        public string SQLiteDBFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=..\\..\\..\\..\\DB\\ML.AccessControl.db;Pooling=true;FailIfMissing=true")]
+        public string SQLiteConnectionString {
             get {
-                return ((string)(this["SQLiteDBFile"]));
+                return ((string)(this["SQLiteConnectionString"]));
             }
             set {
-                this["SQLiteDBFile"] = value;
+                this["SQLiteConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQL2008;Integrated Security=SSPI;Database=ML.AccessControl;" +
+            "")]
+        public string SQLServerConnectionString {
+            get {
+                return ((string)(this["SQLServerConnectionString"]));
+            }
+            set {
+                this["SQLServerConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ML.AccessControl.DAL.SQLite.DBFactory, ML.AccessControl.DAL.SQLite")]
+        public string SQLiteDALType {
+            get {
+                return ((string)(this["SQLiteDALType"]));
+            }
+            set {
+                this["SQLiteDALType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ML.AccessControl.DAL.SQLServer.DBFactory, ML.AccessControl.DAL.SQLServer")]
+        public string SQLServerDALType {
+            get {
+                return ((string)(this["SQLServerDALType"]));
+            }
+            set {
+                this["SQLServerDALType"] = value;
             }
         }
     }

@@ -2,8 +2,17 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SampleWinForms.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SQLiteDBFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\..\..\DB\ML.AccessControl.db</Value>
+    <Setting Name="SQLiteConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=..\..\..\..\DB\ML.AccessControl.db;Pooling=true;FailIfMissing=true</Value>
+    </Setting>
+    <Setting Name="SQLServerConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=localhost\SQL2008;Integrated Security=SSPI;Database=ML.AccessControl;</Value>
+    </Setting>
+    <Setting Name="SQLiteDALType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ML.AccessControl.DAL.SQLite.DBFactory, ML.AccessControl.DAL.SQLite</Value>
+    </Setting>
+    <Setting Name="SQLServerDALType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ML.AccessControl.DAL.SQLServer.DBFactory, ML.AccessControl.DAL.SQLServer</Value>
     </Setting>
   </Settings>
 </SettingsFile>
