@@ -11,6 +11,7 @@ namespace ML.AccessControl.DAL.SQLServer
         private string _sConnectionString;
         private DBTransaction _transaction = null;
         private DBSessions _dbSessions = null;
+        private DBUsers _dbUsers = null;
 
         internal DBManager(string pConnectionString)
         {
@@ -32,6 +33,14 @@ namespace ML.AccessControl.DAL.SQLServer
             return _transaction;
         }
 
+        internal ConnectionWrapper GetConnection()
+        {
+            if (_transaction != null && !_transaction.IsDisposed)
+                return new ConnectionWrapper(_transaction);
+            else
+                return new ConnectionWrapper(new SqlConnection(_sConnectionString));
+        }
+
         public override AbsDBSessions Sessions
         {
             get
@@ -44,7 +53,12 @@ namespace ML.AccessControl.DAL.SQLServer
 
         public override AbsDBUsers Users
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                if (_dbUsers == null)
+                    _dbUsers = new DBUsers(this);
+                return _dbUsers;
+            }
         }
     }
 }

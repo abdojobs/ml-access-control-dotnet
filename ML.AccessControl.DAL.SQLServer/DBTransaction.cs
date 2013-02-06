@@ -15,28 +15,45 @@ namespace ML.AccessControl.DAL.SQLServer
             _transaction = pTransaction;
         }
 
+        internal SqlTransaction InnerTransaction
+        {
+            get { return _transaction; }
+        }
+
         public override void Commit()
         {
-            if (_bIsDisposed)
-                throw new Exception("Cannot commit disposed transaction");
+            if (IsDisposed)
+                throw new ObjectDisposedException(this.GetType().ToString());
+            SqlConnection cnn = _transaction.Connection;
             _transaction.Commit();
-            Dispose();
+            if (cnn != null && cnn.State != System.Data.ConnectionState.Closed)
+                cnn.Close();
+            _transaction = null;
+            cnn = null;
         }
 
         public override void Rollback()
         {
-            if (_bIsDisposed)
-                throw new Exception("Cannot rollback disposed transaction");
+            if (IsDisposed)
+                throw new ObjectDisposedException(this.GetType().ToString());
+            SqlConnection cnn = _transaction.Connection;
             _transaction.Rollback();
-            Dispose();
+            if (cnn != null && cnn.State != System.Data.ConnectionState.Closed)
+                cnn.Close();
+            _transaction = null;
+            cnn = null;
         }
 
         protected override void OnDispose()
         {
             if (_transaction != null)
             {
+                SqlConnection cnn = _transaction.Connection;
                 _transaction.Rollback();
+                if (cnn != null && cnn.State != System.Data.ConnectionState.Closed)
+                    cnn.Close();
                 _transaction = null;
+                cnn = null;
             }
         }
     }
