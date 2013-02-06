@@ -10,8 +10,11 @@ namespace ML.AccessControl.BUS
 {
     public sealed class BusManager
     {
-        private static AbsFactory _dbFactory;
+        private bool _bCacheDALAssembly;
+        private static AbsFactory _dbStaticFactory;
+        private AbsFactory _dbFactory;
         private AbsManager _dbManager;
+
         private BusSessions _sessions;
         private BusRegistration _registration;
         private BusUsers _users;
@@ -19,19 +22,30 @@ namespace ML.AccessControl.BUS
         /// <summary>
         /// Business layer constructor
         /// </summary>
-        /// <param name="pDALayerType"></param>
-        /// <param name="pConnectionString"></param>
-        /// <param name="pCacheDALAssembly">If pCacheDALAssembly is true then subsequent instantiation of the BusManager class will reuse the same DAL assembly. Always set it true if you are always binding to the same data provider.</param>
-        public BusManager(Type pDALayerType, string pConnectionString)
+        /// <param name="pDALayerType">Data type of the DAL DBFactory. e.g Type.GetType("ML.AccessControl.DAL.SQLite.DBFactory, ML.AccessControl.DAL.SQLite", true)</param>
+        /// <param name="pConnectionString">Connection string to the database</param>
+        public BusManager(Type pDALayerType, string pConnectionString) : this(pDALayerType, pConnectionString, true) { }
+
+        /// <summary>
+        /// Business layer constructor
+        /// </summary>
+        /// <param name="pDALayerType">Data type of the DAL DBFactory. e.g Type.GetType("ML.AccessControl.DAL.SQLite.DBFactory, ML.AccessControl.DAL.SQLite", true)</param>
+        /// <param name="pConnectionString">Connection string to the database</param>
+        /// <param name="pCacheDALAssembly">If pCacheDALAssembly is true then subsequent instantiation of the BusManager class will reuse the same DAL assembly. Always set it true if you are not intending to switch the data provider at runtime.</param>
+        public BusManager(Type pDALayerType, string pConnectionString, bool pCacheDALAssembly)
         {
-           
-            if (_dbFactory == null)
+            _bCacheDALAssembly = pCacheDALAssembly;
+            if (_bCacheDALAssembly)
             {
-                //Assembly  assembly = Assembly.LoadFrom("ML.AccessControl.DAL.SQLite.dll");
-                //_dbStaticManager = (AbsDBManager)assembly.CreateInstance("ML.AccessControl.DAL.SQLite.DBManager",false,BindingFlags.Instance | BindingFlags.Public, default(Binder), new[] { "my connection string" }, default(CultureInfo), null);
-                _dbFactory = (AbsFactory)Activator.CreateInstance(pDALayerType);
+                if (_dbStaticFactory == null)
+                    _dbStaticFactory = (AbsFactory)Activator.CreateInstance(pDALayerType);
+                _dbManager = _dbStaticFactory.CreateDBManager(pConnectionString);
             }
-            _dbManager = _dbFactory.CreateDBManager(pConnectionString);
+            else
+            {
+                _dbFactory = (AbsFactory)Activator.CreateInstance(pDALayerType);
+                _dbManager = _dbFactory.CreateDBManager(pConnectionString);
+            }
         }
 
         public BusSessions Sessions
