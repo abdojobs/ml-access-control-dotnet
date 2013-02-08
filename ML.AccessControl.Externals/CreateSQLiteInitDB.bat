@@ -15,7 +15,7 @@ set resultDB=ML.AccessControl_%date:~-4,4%%date:~-7,2%%date:~-10,2%_%hr%%time:~3
 REM Create the commands file here
 ECHO. > ExSQLite.sql
 ECHO .read %inputFolder%mlac_tbl_users.sql >> ExSQLite.sql
-ECHO .read %inputFolder%mlac_tbl_session.sql >> ExSQLite.sql
+ECHO .read %inputFolder%mlac_tbl_sessions.sql >> ExSQLite.sql
 ECHO .read %inputFolder%data_init.sql >> ExSQLite.sql
 IF NOT (%1)==(-sample) GOTO L1
 ECHO .read %inputFolder%data_sample.sql >> ExSQLite.sql

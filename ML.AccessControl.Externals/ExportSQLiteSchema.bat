@@ -15,8 +15,8 @@ REM Create the commands file here
 ECHO. > ExSQLite.sql
 ECHO .output %resultDir%\\mlac_tbl_users.sql >> ExSQLite.sql
 ECHO .schema mlac_tbl_users >> ExSQLite.sql
-ECHO .output %resultDir%\\mlac_tbl_session.sql >> ExSQLite.sql
-ECHO .schema mlac_tbl_session >> ExSQLite.sql
+ECHO .output %resultDir%\\mlac_tbl_sessions.sql >> ExSQLite.sql
+ECHO .schema mlac_tbl_sessions >> ExSQLite.sql
 
 REM Execute the commands file
 sqlite3 %inputDB% < ExSQLite.sql

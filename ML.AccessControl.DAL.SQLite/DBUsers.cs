@@ -68,5 +68,31 @@ namespace ML.AccessControl.DAL.SQLite
             }
             return iResult;
         }
+
+        public override bool GetPasswordHash(string pLoginName, out int pUserId, out string pPasswordHash)
+        {
+            bool bResult = false;
+            pUserId = 0;
+            pPasswordHash = null;
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SQLiteCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT [id],[password_hash] FROM [mlac_tbl_users] WHERE LOWER([login_name])=@pLoginName;";
+                    cmd.Parameters.Add(new SQLiteParameter("@pLoginName", pLoginName.ToLower()));
+                    cnn.Open();
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            pUserId = reader.GetInt32(0);
+                            pPasswordHash = reader.GetString(1);
+                            bResult = true;
+                        }
+                    }
+                }
+            }
+            return bResult;
+        }
     }
 }

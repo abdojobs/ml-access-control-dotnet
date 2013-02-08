@@ -12,101 +12,33 @@ using System.IO;
 using SampleWinForms.Properties;
 using ML.AccessControl.BUS.Common;
 using System.Threading;
+using SampleWinForms.TestCases;
 
 namespace SampleWinForms
 {
     public partial class MainForm : Form
     {
         BusManager _BLL = null;
+        Dictionary<string, Type> _TestCases = new Dictionary<string, Type>()
+            {
+                {"Validations 1",typeof(Validations_1)},
+                {"Create Account",typeof(Create_Account)},
+                {"Authentication",typeof(Authentication)}
+            };
 
         public MainForm()
         {
             //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ar");
             InitializeComponent();
+
+            ddlOperation.DisplayMember = "Key";
+            ddlOperation.ValueMember = "Value";
+            ddlOperation.DataSource = new BindingSource(_TestCases, null);
+
+
             ddlDataProvider.SelectedIndex = 0;
             ddlDataProvider_SelectedIndexChanged(null, EventArgs.Empty);
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MLAC_Error_Messages[] arrErrors;
-            if(_BLL.Registration.CreateAccount(
-                Utils.GenerateRandomChars(5, 20),
-                Utils.GenerateRandomChars(20, 20),
-                Utils.GenerateRandomChars(5, 20),
-                Utils.GenerateRandomChars(5, 20),
-                Utils.GenerateRandomChars(5,20) + "@" + Utils.GenerateRandomChars(4,8) + ".com",
-                out arrErrors))
-            {
-                tbResult.Text = "OK";
-            }
-            else
-            {
-                tbResult.Text = "";
-                foreach (MLAC_Error_Messages err in arrErrors)
-                {
-                    tbResult.Text += "Error: " + err + ": " + _BLL.GetErrorMessage((int)err) + "\n\r";
-                }
-            }
-        }
-
-        private void IsLoginNameAvailableAndValid_Click(object sender, EventArgs e)
-        {
-            MLAC_Error_Messages err;
-            if (_BLL.Registration.IsLoginNameAvailableAndValid(tbIsLoginNameAvailableAndValid1.Text, out err))
-                tbResult.Text = "OK";
-            else
-                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
-        }
-
-        private void IsEmailAvailableAndValid_Click(object sender, EventArgs e)
-        {
-            MLAC_Error_Messages err;
-            if (_BLL.Registration.IsEmailAvailableAndValid(tbIsEmailAvailableAndValid1.Text, out err))
-                tbResult.Text = "OK";
-            else
-                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
-        }
-
-        private void IsPersonNameValid_Click(object sender, EventArgs e)
-        {
-            MLAC_Error_Messages err;
-            if (_BLL.Registration.IsPersonNameValid(tbIsPersonNameValid1.Text, out err))
-                tbResult.Text = "OK";
-            else
-                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
-        }
-
-        private void IsPasswordValid_Click(object sender, EventArgs e)
-        {
-            MLAC_Error_Messages err;
-            if (_BLL.Registration.IsPasswordValid(tbIsPasswordValid1.Text, out err))
-                tbResult.Text = "OK";
-            else
-                tbResult.Text = "Error: " + err + "\r\n" + _BLL.GetErrorMessage((int)err);
-        }
-
-        private void btnCreateAccount_Click(object sender, EventArgs e)
-        {
-            MLAC_Error_Messages[] arrErrors;
-            if (_BLL.Registration.CreateAccount(
-                tbLoginName.Text,
-                tbPassword.Text,
-                tbFirstName.Text,
-                tbLastName.Text,
-                tbEmail.Text,
-                out arrErrors))
-            {
-                tbResult.Text = "OK";
-            }
-            else
-            {
-                tbResult.Text = "";
-                foreach (MLAC_Error_Messages err in arrErrors)
-                {
-                    tbResult.Text += "Error: " + err + ": " + _BLL.GetErrorMessage((int)err) + "\r\n";
-                }
-            }
         }
 
         private void ddlDataProvider_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,6 +58,13 @@ namespace SampleWinForms
                    Settings.Default.SQLServerConnectionString,
                    false);
             }
+            ((TestCase)MainPanel.Controls[0]).BLL = _BLL;
+        }
+
+        private void ddlOperation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+            MainPanel.Controls.Add((TestCase)Activator.CreateInstance((Type)ddlOperation.SelectedValue, new object[] { tbResult, _BLL }));
         }
     }
 }

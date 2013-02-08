@@ -69,5 +69,32 @@ namespace ML.AccessControl.DAL.SQLServer
             }
             return iResult;
         }
+
+        public override bool GetPasswordHash(string pLoginName, out int pUserId, out string pPasswordHash)
+        {
+            bool bResult = false;
+            pUserId = 0;
+            pPasswordHash = null;
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "mlac_sp_usr_GetPasswordHash";
+                    cmd.Parameters.Add(new SqlParameter("@pLoginName", pLoginName.ToLower()));
+                    cnn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            pUserId = reader.GetInt32(0);
+                            pPasswordHash = reader.GetString(1);
+                            bResult = true;
+                        }
+                    }
+                }
+            }
+            return bResult;
+        }
     }
 }

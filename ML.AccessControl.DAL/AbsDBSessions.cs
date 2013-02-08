@@ -8,5 +8,7 @@ namespace ML.AccessControl.DAL
     public abstract class AbsDBSessions : _AbsDBBase
     {
         public AbsDBSessions(AbsManager pDBManager) : base(pDBManager) { }
+
+        public abstract Guid CreateSession(int pUserId, string pAccessPoint);
     }
 }

@@ -12,5 +12,6 @@ namespace ML.AccessControl.DAL
         public abstract bool IsLoginNameAvailable(string pLoginName);
         public abstract bool IsEmailAvailable(string pEmail);
         public abstract int CreateUser(string pLoginName, string pPasswordHash, string pFirstName, string pLastName, string pEmail, DateTime pCreatedOn, bool pIsActive);
+        public abstract bool GetPasswordHash(string pLoginName, out int pUserId, out string pPasswordHash);
     }
 }
