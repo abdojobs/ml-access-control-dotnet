@@ -33,5 +33,22 @@ namespace ML.AccessControl.DAL.SQLite
             return result;
         }
 
+        public override bool DeleteSession(Guid pSessionGuid)
+        {
+            bool bResult = false;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SQLiteCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM [mlac_tbl_sessions] WHERE [hash]=@pSessionGuid;";
+                    cmd.Parameters.Add(new SQLiteParameter("@pSessionGuid", pSessionGuid));
+                    cnn.Open();
+                    bResult = (cmd.ExecuteNonQuery() > 0);
+                }
+            }
+            return bResult;
+        }
+
     }
 }

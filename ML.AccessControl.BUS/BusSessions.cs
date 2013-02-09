@@ -51,6 +51,20 @@ namespace ML.AccessControl.BUS
             return pSessionHash;
         }
 
+        /// <summary>
+        /// End an active session. This method should be called to logout certain user
+        /// </summary>
+        /// <param name="pSessionGuid">Session Guid id</param>
+        /// <returns>True if the session found, and false in case the session record was not found</returns>
+        public bool EndSession(Guid pSessionGuid)
+        {
+            bool bResult = false;
+
+            bResult = _dbManager.Sessions.DeleteSession(pSessionGuid);
+
+            return bResult;
+        }
+
         ///// <summary>
         ///// Retrieves ACSession object for the given session hash
         ///// </summary>

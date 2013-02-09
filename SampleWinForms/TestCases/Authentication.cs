@@ -22,9 +22,28 @@ namespace SampleWinForms.TestCases
         {
             Guid SessionId = BLL.Sessions.Authenticate(tbLoginName.Text, tbPassword.Text, tbAccessPoint.Text);
             if (SessionId == Guid.Empty)
+            {
                 Result.Text = "Invalid login name or password!";
+                tbSessionGuid.Text = "";
+            }
             else
+            {
                 Result.Text = "Success!\r\nSession ID: " + SessionId.ToString();
+                tbSessionGuid.Text = SessionId.ToString();
+            }
+        }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            Guid SessionId = Guid.Parse(tbSessionGuid.Text);
+            if (BLL.Sessions.EndSession(SessionId))
+            {
+                Result.Text = "OK! Session ended successfully";
+            }
+            else
+            {
+                Result.Text = "Error: Session cannot be found!";
+            }
         }
     }
 }

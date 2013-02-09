@@ -10,5 +10,6 @@ namespace ML.AccessControl.DAL
         public AbsDBSessions(AbsManager pDBManager) : base(pDBManager) { }
 
         public abstract Guid CreateSession(int pUserId, string pAccessPoint);
+        public abstract bool DeleteSession(Guid pSessionGuid);
     }
 }

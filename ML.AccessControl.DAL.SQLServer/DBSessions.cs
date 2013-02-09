@@ -32,5 +32,23 @@ namespace ML.AccessControl.DAL.SQLServer
             }
             return result;
         }
+
+        public override bool DeleteSession(Guid pSessionGuid)
+        {
+            bool bResult = false;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "mlac_sp_ses_DeleteSession";
+                    cmd.Parameters.Add(new SqlParameter("@pSessionGuid", pSessionGuid));
+                    cnn.Open();
+                    bResult = (cmd.ExecuteNonQuery() > 0);
+                }
+            }
+            return bResult;
+        }
     }
 }
