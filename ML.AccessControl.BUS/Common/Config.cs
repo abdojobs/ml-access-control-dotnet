@@ -26,6 +26,8 @@ namespace ML.AccessControl.BUS.Common
         public static readonly int NAME_LEN_MIN = 1;
         public static readonly bool NAME_REQUIRED = false;
 
+        public static readonly TimeSpan MLAC_SESSION_EXPIRE_AFTER = TimeSpan.FromMinutes(20);
+
         
 
 

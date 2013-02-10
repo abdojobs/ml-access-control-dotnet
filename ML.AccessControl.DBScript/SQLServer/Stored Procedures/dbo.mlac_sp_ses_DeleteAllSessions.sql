@@ -1,0 +1,14 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[mlac_sp_ses_DeleteAllSessions]
+AS
+BEGIN
+	--SET NOCOUNT ON;
+
+	DELETE FROM [mlac_tbl_sessions]
+
+END
+GO

@@ -45,6 +45,66 @@ namespace ML.AccessControl.DAL.SQLServer
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.CommandText = "mlac_sp_ses_DeleteSession";
+
+                    cmd.Parameters.Add(new SqlParameter("@pSessionGuid", pSessionGuid));
+                    cnn.Open();
+                    bResult = (cmd.ExecuteNonQuery() > 0);
+                }
+            }
+            return bResult;
+        }
+
+        public override int DeleteSessions(TimeSpan pOlderThan)
+        {
+            int iResult = 0;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "mlac_sp_ses_DeleteSessions";
+
+                    DateTime dtOlderThanDate = DateTime.Now - pOlderThan;
+                    cmd.Parameters.Add(new SqlParameter("@pOlderThanDate", dtOlderThanDate));
+                    cnn.Open();
+                    iResult = cmd.ExecuteNonQuery();
+                }
+            }
+            return iResult;
+        }
+
+        public override int DeleteAllSessions()
+        {
+            int iResult = 0;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "mlac_sp_ses_DeleteAllSessions";
+
+                    cnn.Open();
+                    iResult = cmd.ExecuteNonQuery();
+                }
+            }
+            return iResult;
+        }
+
+        public override bool UpdateSession(Guid pSessionGuid)
+        {
+            bool bResult = false;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "mlac_sp_ses_UpdateSession";
+
+                    DateTime dtNow = DateTime.Now;
+                    cmd.Parameters.Add(new SqlParameter("@pLastUpdated", dtNow));
                     cmd.Parameters.Add(new SqlParameter("@pSessionGuid", pSessionGuid));
                     cnn.Open();
                     bResult = (cmd.ExecuteNonQuery() > 0);

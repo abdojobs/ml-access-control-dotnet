@@ -37,13 +37,40 @@ namespace SampleWinForms.TestCases
         {
             Guid SessionId = Guid.Parse(tbSessionGuid.Text);
             if (BLL.Sessions.EndSession(SessionId))
-            {
                 Result.Text = "OK! Session ended successfully";
-            }
             else
-            {
                 Result.Text = "Error: Session cannot be found!";
-            }
+        }
+
+        private void btnKeepAlive_Click(object sender, EventArgs e)
+        {
+            Guid SessionId = Guid.Parse(tbSessionGuid.Text);
+            if (BLL.Sessions.KeepAlive(SessionId, false))
+                Result.Text = "OK! Session updated successfully";
+            else
+                Result.Text = "!!!!! Session was not found";
+        }
+
+        private void btnEndOldSessions_Click(object sender, EventArgs e)
+        {
+            int iSessionsEnded = BLL.Sessions.EndOldSessions();
+            Result.Text = iSessionsEnded.ToString() + " Sessions ended successfully";
+
+        }
+
+        private void btnKeepAliveAndEndOldSessions_Click(object sender, EventArgs e)
+        {
+            Guid SessionId = Guid.Parse(tbSessionGuid.Text);
+            if (BLL.Sessions.KeepAlive(SessionId))
+                Result.Text = "OK! Expired Sessions ended successfully \r\nSession updated successfully";
+            else
+                Result.Text = "OK! Expired Sessions ended successfully \r\n!!!!! Session was not found";
+        }
+
+        private void btnDeleteAllSessions_Click(object sender, EventArgs e)
+        {
+            int iSessionsEnded = BLL.Sessions.EndAllSessions();
+            Result.Text = iSessionsEnded.ToString() + " Sessions ended successfully";
         }
     }
 }
