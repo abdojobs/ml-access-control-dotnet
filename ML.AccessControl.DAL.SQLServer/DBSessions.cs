@@ -21,10 +21,12 @@ namespace ML.AccessControl.DAL.SQLServer
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.CommandText = "mlac_sp_ses_CreateSession";
 
+                    DateTime dtNow = DateTime.Now;
                     cmd.Parameters.Add(new SqlParameter("@pHash", result));
                     cmd.Parameters.Add(new SqlParameter("@pUserId", pUserId));
                     cmd.Parameters.Add(new SqlParameter("@pAccessPoint", (pAccessPoint == null) ? DBNull.Value : (object)pAccessPoint));
-                    cmd.Parameters.Add(new SqlParameter("@pDateCreated", DateTime.Now));
+                    cmd.Parameters.Add(new SqlParameter("@pDateCreated", dtNow));
+                    cmd.Parameters.Add(new SqlParameter("@pLastUpdated", dtNow));
 
                     cnn.Open();
                     cmd.ExecuteNonQuery();

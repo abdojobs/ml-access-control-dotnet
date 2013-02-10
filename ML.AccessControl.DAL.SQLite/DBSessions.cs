@@ -18,13 +18,15 @@ namespace ML.AccessControl.DAL.SQLite
             {
                 using (SQLiteCommand cmd = cnn.CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO [mlac_tbl_sessions] ([hash],[user_id],[access_point],[date_created]) " +
-                                      "VALUES (@pHash,@pUserId,@pAccessPoint,@pDateCreated);";
+                    cmd.CommandText = "INSERT INTO [mlac_tbl_sessions] ([hash],[user_id],[access_point],[date_created],[last_updated]) " +
+                                      "VALUES (@pHash,@pUserId,@pAccessPoint,@pDateCreated,@pLastUpdated);";
 
+                    DateTime dtNow = DateTime.Now;
                     cmd.Parameters.Add(new SQLiteParameter("@pHash", result));
                     cmd.Parameters.Add(new SQLiteParameter("@pUserId", pUserId));
                     cmd.Parameters.Add(new SQLiteParameter("@pAccessPoint", pAccessPoint));//(pAccessPoint == null) ? DBNull.Value : (object)pAccessPoint));
-                    cmd.Parameters.Add(new SQLiteParameter("@pDateCreated", DateTime.Now));
+                    cmd.Parameters.Add(new SQLiteParameter("@pDateCreated", dtNow));
+                    cmd.Parameters.Add(new SQLiteParameter("@pLastUpdated", dtNow));
 
                     cnn.Open();
                     cmd.ExecuteNonQuery();
