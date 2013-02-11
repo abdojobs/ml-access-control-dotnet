@@ -17,6 +17,10 @@ ECHO .output %resultDir%\\mlac_tbl_users.sql >> ExSQLite.sql
 ECHO .schema mlac_tbl_users >> ExSQLite.sql
 ECHO .output %resultDir%\\mlac_tbl_sessions.sql >> ExSQLite.sql
 ECHO .schema mlac_tbl_sessions >> ExSQLite.sql
+ECHO .output %resultDir%\\mlac_tbl_access_types.sql >> ExSQLite.sql
+ECHO .schema mlac_tbl_access_types >> ExSQLite.sql
+ECHO .output %resultDir%\\mlac_tbl_object_types.sql >> ExSQLite.sql
+ECHO .schema mlac_tbl_object_types >> ExSQLite.sql
 
 REM Execute the commands file
 sqlite3 %inputDB% < ExSQLite.sql

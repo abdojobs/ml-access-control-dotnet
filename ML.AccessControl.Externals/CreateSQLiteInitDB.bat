@@ -16,6 +16,8 @@ REM Create the commands file here
 ECHO. > ExSQLite.sql
 ECHO .read %inputFolder%mlac_tbl_users.sql >> ExSQLite.sql
 ECHO .read %inputFolder%mlac_tbl_sessions.sql >> ExSQLite.sql
+ECHO .read %inputFolder%mlac_tbl_access_types.sql >> ExSQLite.sql
+ECHO .read %inputFolder%mlac_tbl_object_types.sql >> ExSQLite.sql
 ECHO .read %inputFolder%data_init.sql >> ExSQLite.sql
 IF NOT (%1)==(-sample) GOTO L1
 ECHO .read %inputFolder%data_sample.sql >> ExSQLite.sql
