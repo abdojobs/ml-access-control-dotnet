@@ -1,0 +1,1 @@
+CREATE TABLE [mlac_tbl_role_permission] ([role_id] INTEGER NOT NULL REFERENCES [mlac_tbl_roles] ([id]), [object_type_id] INTEGER NOT NULL REFERENCES [mlac_tbl_object_types] ([id]), [object_id] INTEGER NOT NULL, [access_flag_id] INTEGER NOT NULL REFERENCES [mlac_tbl_access_flags] ([id]), PRIMARY KEY ([role_id], [object_type_id], [object_id]));
