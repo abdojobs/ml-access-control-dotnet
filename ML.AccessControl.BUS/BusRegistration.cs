@@ -62,9 +62,37 @@ namespace ML.AccessControl.BUS
             if (!_busManager.Users.IsPasswordValid(pPassword, out errorMessage))
                 lstErrors.Add(errorMessage);
             if (!_busManager.Users.IsPersonNameValid(pFirstName, out errorMessage))
+            {
+                switch (errorMessage)
+                {
+                    case MLAC_Error_Messages.ERR_NAME_INVALID:
+                        errorMessage = MLAC_Error_Messages.ERR_FIRST_NAME_INVALID;
+                        break;
+                    case MLAC_Error_Messages.ERR_NAME_TOOSHORT:
+                        errorMessage = MLAC_Error_Messages.ERR_FIRST_NAME_TOOSHORT;
+                        break;
+                    case MLAC_Error_Messages.ERR_NAME_TOOLONG:
+                        errorMessage = MLAC_Error_Messages.ERR_FIRST_NAME_TOOLONG;
+                        break;
+                }
                 lstErrors.Add(errorMessage);
+            }
             if (!_busManager.Users.IsPersonNameValid(pLastName, out errorMessage))
+            {
+                switch (errorMessage)
+                {
+                    case MLAC_Error_Messages.ERR_NAME_INVALID:
+                        errorMessage = MLAC_Error_Messages.ERR_LAST_NAME_INVALID;
+                        break;
+                    case MLAC_Error_Messages.ERR_NAME_TOOSHORT:
+                        errorMessage = MLAC_Error_Messages.ERR_LAST_NAME_TOOSHORT;
+                        break;
+                    case MLAC_Error_Messages.ERR_NAME_TOOLONG:
+                        errorMessage = MLAC_Error_Messages.ERR_LAST_NAME_TOOLONG;
+                        break;
+                }
                 lstErrors.Add(errorMessage);
+            }
             if (!_busManager.Users.IsLoginNameValid(pLoginName, out errorMessage))
                 lstErrors.Add(errorMessage);
             if (!_busManager.Users.IsEmailValid(pEmail, out errorMessage))

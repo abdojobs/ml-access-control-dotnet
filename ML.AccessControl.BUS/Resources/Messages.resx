@@ -150,6 +150,24 @@
   <data name="ERR_1202" xml:space="preserve">
     <value>Name is too long</value>
   </data>
+  <data name="ERR_1220" xml:space="preserve">
+    <value>Invalid first name</value>
+  </data>
+  <data name="ERR_1221" xml:space="preserve">
+    <value>First name is too short</value>
+  </data>
+  <data name="ERR_1222" xml:space="preserve">
+    <value>First name is too long</value>
+  </data>
+  <data name="ERR_1240" xml:space="preserve">
+    <value>Invalid last name</value>
+  </data>
+  <data name="ERR_1241" xml:space="preserve">
+    <value>Last name is too short</value>
+  </data>
+  <data name="ERR_1242" xml:space="preserve">
+    <value>Last name is too long</value>
+  </data>
   <data name="ERR_1300" xml:space="preserve">
     <value>Invalid password</value>
   </data>

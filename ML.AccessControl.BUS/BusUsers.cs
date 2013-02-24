@@ -17,7 +17,7 @@ namespace ML.AccessControl.BUS
         {
             pErrorMessage = MLAC_Error_Messages._NO_ERROR;
 
-            if (pName == null && !Config.NAME_REQUIRED)
+            if (string.IsNullOrEmpty(pName) && !Config.NAME_REQUIRED)
                 return true;
 
             if (pName.Length < Config.NAME_LEN_MIN)

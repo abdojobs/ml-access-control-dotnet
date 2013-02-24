@@ -160,6 +160,60 @@ namespace ML.AccessControl.BUS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid first name.
+        /// </summary>
+        internal static string ERR_1220 {
+            get {
+                return ResourceManager.GetString("ERR_1220", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name is too short.
+        /// </summary>
+        internal static string ERR_1221 {
+            get {
+                return ResourceManager.GetString("ERR_1221", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name is too long.
+        /// </summary>
+        internal static string ERR_1222 {
+            get {
+                return ResourceManager.GetString("ERR_1222", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid last name.
+        /// </summary>
+        internal static string ERR_1240 {
+            get {
+                return ResourceManager.GetString("ERR_1240", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is too short.
+        /// </summary>
+        internal static string ERR_1241 {
+            get {
+                return ResourceManager.GetString("ERR_1241", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is too long.
+        /// </summary>
+        internal static string ERR_1242 {
+            get {
+                return ResourceManager.GetString("ERR_1242", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid password.
         /// </summary>
         internal static string ERR_1300 {
