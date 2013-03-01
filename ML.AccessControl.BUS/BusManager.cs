@@ -18,6 +18,7 @@ namespace ML.AccessControl.BUS
         private BusSessions _sessions;
         private BusRegistration _registration;
         private BusUsers _users;
+        private BusRoles _roles;
 
         /// <summary>
         /// Business layer constructor
@@ -75,6 +76,16 @@ namespace ML.AccessControl.BUS
                 if (_users == null)
                     _users = new BusUsers(this, _dbManager);
                 return _users;
+            }
+        }
+
+        public BusRoles Roles
+        {
+            get
+            {
+                if (_roles == null)
+                    _roles = new BusRoles(this, _dbManager);
+                return _roles;
             }
         }
 

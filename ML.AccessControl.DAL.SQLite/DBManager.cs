@@ -12,6 +12,7 @@ namespace ML.AccessControl.DAL.SQLite
         private DBTransaction _transaction = null;
         private DBSessions _dbSessions = null;
         private DBUsers _dbUsers = null;
+        private DBRoles _dbRoles = null;
 
         internal DBManager(string pConnectionString)
         {
@@ -58,6 +59,16 @@ namespace ML.AccessControl.DAL.SQLite
                 if (_dbUsers == null)
                     _dbUsers = new DBUsers(this);
                 return _dbUsers;
+            }
+        }
+
+        public override AbsDBRoles Roles
+        {
+            get
+            {
+                if (_dbRoles == null)
+                    _dbRoles = new DBRoles(this);
+                return _dbRoles;
             }
         }
     }

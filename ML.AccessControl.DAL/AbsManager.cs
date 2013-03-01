@@ -13,6 +13,7 @@ namespace ML.AccessControl.DAL
 
         public abstract AbsDBSessions Sessions { get; }
         public abstract AbsDBUsers Users { get; }
+        public abstract AbsDBRoles Roles { get; }
 
     }
 }

@@ -43,6 +43,7 @@
     <Compile Include="ConnectionWrapper.cs" />
     <Compile Include="DBFactory.cs" />
     <Compile Include="DBManager.cs" />
+    <Compile Include="DBRoles.cs" />
     <Compile Include="DBSessions.cs" />
     <Compile Include="DBTransaction.cs" />
     <Compile Include="DBUsers.cs" />

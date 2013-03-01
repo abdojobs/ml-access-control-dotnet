@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbsDBRoles.cs" />
     <Compile Include="AbsManager.cs" />
     <Compile Include="AbsDBSessions.cs" />
     <Compile Include="AbsDBUsers.cs" />
+    <Compile Include="Common\DBRole.cs" />
     <Compile Include="_AbsDBBase.cs" />
     <Compile Include="AbsFactory.cs" />
     <Compile Include="AbsTransaction.cs" />

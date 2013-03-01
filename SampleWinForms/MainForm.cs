@@ -23,7 +23,8 @@ namespace SampleWinForms
             {
                 {"Validations 1",typeof(Validations_1)},
                 {"Create Account",typeof(Create_Account)},
-                {"Authentication",typeof(Authentication)}
+                {"Authentication",typeof(Authentication)},
+                {"Roles",typeof(Roles)}
             };
 
         public MainForm()

@@ -69,6 +69,12 @@
     <Compile Include="TestCase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="TestCases\Roles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestCases\Roles.Designer.cs">
+      <DependentUpon>Roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestCases\Validations_1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TestCases\Roles.resx">
+      <DependentUpon>Roles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestCases\Validations_1.resx">
       <DependentUpon>Validations_1.cs</DependentUpon>
     </EmbeddedResource>
