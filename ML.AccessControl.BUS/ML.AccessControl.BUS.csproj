@@ -45,16 +45,10 @@
     <Compile Include="BusSessions.cs" />
     <Compile Include="BusUsers.cs" />
     <Compile Include="Common\Config.cs" />
-    <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\Utils\PaswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BusManager.cs" />
     <Compile Include="BusRegistration.cs" />
-    <Compile Include="Resources\Messages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ML.AccessControl.Common\ML.AccessControl.Common.csproj">
@@ -65,13 +59,6 @@
       <Project>{D19A4837-1296-4987-ADF0-C134292E3DB2}</Project>
       <Name>ML.AccessControl.DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Messages.ar.resx" />
-    <EmbeddedResource Include="Resources\Messages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ML.AccessControl.BUS.Common;
 using ML.AccessControl.BUS;
+using ML.AccessControl.Common.Enums;
 
 namespace SampleWinForms.TestCases
 {

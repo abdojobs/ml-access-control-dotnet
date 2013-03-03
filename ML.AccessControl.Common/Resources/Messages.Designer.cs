@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ML.AccessControl.BUS.Resources {
+namespace ML.AccessControl.Common.Resources {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace ML.AccessControl.BUS.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Messages {
+    public class Messages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace ML.AccessControl.BUS.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ML.AccessControl.BUS.Resources.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ML.AccessControl.Common.Resources.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ML.AccessControl.BUS.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid login name.
         /// </summary>
-        internal static string ERR_1000 {
+        public static string ERR_1000 {
             get {
                 return ResourceManager.GetString("ERR_1000", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Login name is too short.
         /// </summary>
-        internal static string ERR_1001 {
+        public static string ERR_1001 {
             get {
                 return ResourceManager.GetString("ERR_1001", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Login name is too long.
         /// </summary>
-        internal static string ERR_1002 {
+        public static string ERR_1002 {
             get {
                 return ResourceManager.GetString("ERR_1002", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Login name is not available.
         /// </summary>
-        internal static string ERR_1003 {
+        public static string ERR_1003 {
             get {
                 return ResourceManager.GetString("ERR_1003", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid email.
         /// </summary>
-        internal static string ERR_1100 {
+        public static string ERR_1100 {
             get {
                 return ResourceManager.GetString("ERR_1100", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Email is too short.
         /// </summary>
-        internal static string ERR_1101 {
+        public static string ERR_1101 {
             get {
                 return ResourceManager.GetString("ERR_1101", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Email is too long.
         /// </summary>
-        internal static string ERR_1102 {
+        public static string ERR_1102 {
             get {
                 return ResourceManager.GetString("ERR_1102", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Email is not available.
         /// </summary>
-        internal static string ERR_1103 {
+        public static string ERR_1103 {
             get {
                 return ResourceManager.GetString("ERR_1103", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid name.
         /// </summary>
-        internal static string ERR_1200 {
+        public static string ERR_1200 {
             get {
                 return ResourceManager.GetString("ERR_1200", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name is too short.
         /// </summary>
-        internal static string ERR_1201 {
+        public static string ERR_1201 {
             get {
                 return ResourceManager.GetString("ERR_1201", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name is too long.
         /// </summary>
-        internal static string ERR_1202 {
+        public static string ERR_1202 {
             get {
                 return ResourceManager.GetString("ERR_1202", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid first name.
         /// </summary>
-        internal static string ERR_1220 {
+        public static string ERR_1220 {
             get {
                 return ResourceManager.GetString("ERR_1220", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to First name is too short.
         /// </summary>
-        internal static string ERR_1221 {
+        public static string ERR_1221 {
             get {
                 return ResourceManager.GetString("ERR_1221", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to First name is too long.
         /// </summary>
-        internal static string ERR_1222 {
+        public static string ERR_1222 {
             get {
                 return ResourceManager.GetString("ERR_1222", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid last name.
         /// </summary>
-        internal static string ERR_1240 {
+        public static string ERR_1240 {
             get {
                 return ResourceManager.GetString("ERR_1240", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Last name is too short.
         /// </summary>
-        internal static string ERR_1241 {
+        public static string ERR_1241 {
             get {
                 return ResourceManager.GetString("ERR_1241", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Last name is too long.
         /// </summary>
-        internal static string ERR_1242 {
+        public static string ERR_1242 {
             get {
                 return ResourceManager.GetString("ERR_1242", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid password.
         /// </summary>
-        internal static string ERR_1300 {
+        public static string ERR_1300 {
             get {
                 return ResourceManager.GetString("ERR_1300", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Password is too short.
         /// </summary>
-        internal static string ERR_1301 {
+        public static string ERR_1301 {
             get {
                 return ResourceManager.GetString("ERR_1301", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace ML.AccessControl.BUS.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Password is too long.
         /// </summary>
-        internal static string ERR_1302 {
+        public static string ERR_1302 {
             get {
                 return ResourceManager.GetString("ERR_1302", resourceCulture);
             }

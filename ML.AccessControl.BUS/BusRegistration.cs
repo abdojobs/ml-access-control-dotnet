@@ -6,6 +6,7 @@ using ML.AccessControl.DAL;
 using System.Text.RegularExpressions;
 using ML.AccessControl.BUS.Common;
 using ML.AccessControl.BUS.Common.Utils;
+using ML.AccessControl.Common.Enums;
 
 namespace ML.AccessControl.BUS
 {

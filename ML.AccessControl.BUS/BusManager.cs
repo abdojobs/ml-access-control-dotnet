@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using ML.AccessControl.DAL;
 using System.Globalization;
+using ML.AccessControl.Common.Resources;
 
 namespace ML.AccessControl.BUS
 {
@@ -92,7 +93,7 @@ namespace ML.AccessControl.BUS
         public string GetErrorMessage(int pMessageId)
         {
             string sResult = null;
-            sResult = Resources.Messages.ResourceManager.GetString("ERR_" + pMessageId.ToString());
+            sResult = Messages.ResourceManager.GetString("ERR_" + pMessageId.ToString());
 
             return sResult;
         }
