@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B7C2BB66-90A3-4679-9EDA-74C0C1168408}</ProjectGuid>
+    <ProjectGuid>{2BC86852-464C-411A-B579-2BCFD1328B02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ML.AccessControl.BUS</RootNamespace>
-    <AssemblyName>ML.AccessControl.BUS</AssemblyName>
+    <RootNamespace>ML.AccessControl.Common</RootNamespace>
+    <AssemblyName>ML.AccessControl.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,39 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbsBusBase.cs" />
-    <Compile Include="BusRoles.cs" />
-    <Compile Include="BusSessions.cs" />
-    <Compile Include="BusUsers.cs" />
-    <Compile Include="Common\Config.cs" />
-    <Compile Include="Common\Enums.cs" />
-    <Compile Include="Common\Utils\PaswordHash.cs" />
+    <Compile Include="Entities\ACRole.cs" />
+    <Compile Include="Entities\ACSession.cs" />
+    <Compile Include="Entities\ACUser.cs" />
+    <Compile Include="Enums\SessionLoadOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BusManager.cs" />
-    <Compile Include="BusRegistration.cs" />
-    <Compile Include="Resources\Messages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ML.AccessControl.Common\ML.AccessControl.Common.csproj">
-      <Project>{2BC86852-464C-411A-B579-2BCFD1328B02}</Project>
-      <Name>ML.AccessControl.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ML.AccessControl.DAL\ML.AccessControl.DAL.csproj">
-      <Project>{D19A4837-1296-4987-ADF0-C134292E3DB2}</Project>
-      <Name>ML.AccessControl.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Messages.ar.resx" />
-    <EmbeddedResource Include="Resources\Messages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

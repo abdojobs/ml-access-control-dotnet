@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ML.AccessControl.DAL;
-using ML.AccessControl.BUS.Entities;
 using ML.AccessControl.DAL.Common;
 using ML.AccessControl.DAL.Common.Enums;
+using ML.AccessControl.Common.Entities;
 
 namespace ML.AccessControl.BUS
 {

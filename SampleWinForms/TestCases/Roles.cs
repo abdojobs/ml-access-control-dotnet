@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ML.AccessControl.BUS;
-using ML.AccessControl.BUS.Entities;
+using ML.AccessControl.Common.Entities;
 
 namespace SampleWinForms.TestCases
 {

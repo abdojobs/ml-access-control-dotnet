@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ML.AccessControl.BUS.Entities
+namespace ML.AccessControl.Common.Entities
 {
     public class ACRole
     {
