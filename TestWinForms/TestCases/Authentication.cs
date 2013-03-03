@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ML.AccessControl.BUS;
 
-namespace SampleWinForms.TestCases
+namespace TestWinForms.TestCases
 {
     public partial class Authentication : TestCase
     {

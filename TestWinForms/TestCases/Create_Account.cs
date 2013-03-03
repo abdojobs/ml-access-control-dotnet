@@ -10,7 +10,7 @@ using ML.AccessControl.BUS.Common;
 using ML.AccessControl.BUS;
 using ML.AccessControl.Common.Enums;
 
-namespace SampleWinForms.TestCases
+namespace TestWinForms.TestCases
 {
     public partial class Create_Account : TestCase
     {

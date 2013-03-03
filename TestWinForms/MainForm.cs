@@ -9,12 +9,12 @@ using System.Windows.Forms;
 using ML.AccessControl.BUS;
 using System.Data.Common;
 using System.IO;
-using SampleWinForms.Properties;
 using ML.AccessControl.BUS.Common;
 using System.Threading;
-using SampleWinForms.TestCases;
+using TestWinForms.TestCases;
+using TestWinForms.Properties;
 
-namespace SampleWinForms
+namespace TestWinForms
 {
     public partial class MainForm : Form
     {

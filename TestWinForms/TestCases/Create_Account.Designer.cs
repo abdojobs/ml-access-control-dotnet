@@ -1,4 +1,4 @@
-﻿namespace SampleWinForms.TestCases
+﻿namespace TestWinForms.TestCases
 {
     partial class Create_Account
     {

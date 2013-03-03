@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using ML.AccessControl.BUS;
 
-namespace SampleWinForms
+namespace TestWinForms
 {
     public class TestCase : UserControl
     {

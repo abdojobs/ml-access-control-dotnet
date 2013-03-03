@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using ML.AccessControl.BUS;
 using ML.AccessControl.Common.Entities;
 
-namespace SampleWinForms.TestCases
+namespace TestWinForms.TestCases
 {
     public partial class Roles : TestCase
     {
