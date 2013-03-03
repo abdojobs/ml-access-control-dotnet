@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ML.AccessControl.DAL.Common;
 using System.Data.SQLite;
-using ML.AccessControl.DAL.Common.Enums;
+using ML.AccessControl.Common.Entities;
+using ML.AccessControl.Common.Enums;
 
 namespace ML.AccessControl.DAL.SQLite
 {
@@ -12,9 +12,9 @@ namespace ML.AccessControl.DAL.SQLite
     {
         public DBRoles(AbsManager pDBManager) : base(pDBManager) { }
 
-        public override DBRole[] ListRoles(RoleListingOptions pListingOptions)
+        public override ACRole[] ListRoles(RoleListingOptions pListingOptions)
         {
-            List<DBRole> lstResult = new List<DBRole>();
+            List<ACRole> lstResult = new List<ACRole>();
             
             using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
             {
@@ -34,7 +34,7 @@ namespace ML.AccessControl.DAL.SQLite
                     {
                         while(reader.Read())
                         {
-                            lstResult.Add(new DBRole()
+                            lstResult.Add(new ACRole()
                             {
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),

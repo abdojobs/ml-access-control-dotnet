@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ML.AccessControl.DAL;
-using ML.AccessControl.DAL.Common;
-using ML.AccessControl.DAL.Common.Enums;
 using ML.AccessControl.Common.Entities;
+using ML.AccessControl.Common.Enums;
 
 namespace ML.AccessControl.BUS
 {
@@ -45,22 +44,7 @@ namespace ML.AccessControl.BUS
 
         internal ACRole[] ListRoles(RoleListingOptions pListingOptions)
         {
-            List<ACRole> lstRoles = new List<ACRole>();
-
-            DBRole[] roles = _dbManager.Roles.ListRoles(pListingOptions);
-            foreach (var role in roles)
-            {
-                lstRoles.Add(new ACRole()
-                {
-                    Id = role.Id,
-                    Name = role.Name,
-                    IsSystem = role.IsSystem,
-                    IsDeletable = role.IsDeletable,
-                    IsHidden = role.IsHidden
-                });
-            }
-
-            return lstRoles.ToArray();
+            return _dbManager.Roles.ListRoles(pListingOptions);
         }
     }
 }

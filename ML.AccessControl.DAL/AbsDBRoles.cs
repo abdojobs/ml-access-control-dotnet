@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ML.AccessControl.DAL.Common;
-using ML.AccessControl.DAL.Common.Enums;
+using ML.AccessControl.Common.Entities;
+using ML.AccessControl.Common.Enums;
 
 namespace ML.AccessControl.DAL
 {
@@ -11,6 +11,6 @@ namespace ML.AccessControl.DAL
     {
         public AbsDBRoles(AbsManager pDBManager) : base(pDBManager) { }
 
-        public abstract DBRole[] ListRoles(RoleListingOptions pListingOptions);
+        public abstract ACRole[] ListRoles(RoleListingOptions pListingOptions);
     }
 }

@@ -43,6 +43,7 @@
     <Compile Include="Entities\ACRole.cs" />
     <Compile Include="Entities\ACSession.cs" />
     <Compile Include="Entities\ACUser.cs" />
+    <Compile Include="Enums\RoleListingOptions.cs" />
     <Compile Include="Enums\SessionLoadOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

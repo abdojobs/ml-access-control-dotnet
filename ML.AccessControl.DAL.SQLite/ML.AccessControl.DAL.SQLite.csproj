@@ -53,6 +53,10 @@
     <Compile Include="DBSessions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ML.AccessControl.Common\ML.AccessControl.Common.csproj">
+      <Project>{2BC86852-464C-411A-B579-2BCFD1328B02}</Project>
+      <Name>ML.AccessControl.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ML.AccessControl.DAL\ML.AccessControl.DAL.csproj">
       <Project>{D19A4837-1296-4987-ADF0-C134292E3DB2}</Project>
       <Name>ML.AccessControl.DAL</Name>

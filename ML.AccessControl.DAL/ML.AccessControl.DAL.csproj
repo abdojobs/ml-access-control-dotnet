@@ -44,12 +44,16 @@
     <Compile Include="AbsManager.cs" />
     <Compile Include="AbsDBSessions.cs" />
     <Compile Include="AbsDBUsers.cs" />
-    <Compile Include="Common\DBRole.cs" />
     <Compile Include="_AbsDBBase.cs" />
     <Compile Include="AbsFactory.cs" />
     <Compile Include="AbsTransaction.cs" />
-    <Compile Include="Common\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ML.AccessControl.Common\ML.AccessControl.Common.csproj">
+      <Project>{2BC86852-464C-411A-B579-2BCFD1328B02}</Project>
+      <Name>ML.AccessControl.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
