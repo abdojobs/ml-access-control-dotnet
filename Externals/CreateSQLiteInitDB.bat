@@ -5,7 +5,7 @@ ECHO Use it with " -sample" parameter to populate the DB with sample data
 ECHO.
 PAUSE
 
-SET inputFolder=..\\ML.AccessControl.DBScript\\SQLite3\\
+SET inputFolder=..\\DBScripts\\SQLite3\\
 
 REM Generate the DB file name
 set hr=%time:~0,2%
