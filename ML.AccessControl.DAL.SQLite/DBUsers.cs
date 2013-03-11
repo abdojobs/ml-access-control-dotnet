@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
+using ML.AccessControl.Common.Entities;
 
 namespace ML.AccessControl.DAL.SQLite
 {
@@ -93,6 +94,36 @@ namespace ML.AccessControl.DAL.SQLite
                 }
             }
             return bResult;
+        }
+
+        public override ACUser LoadUserInfo(int pUserId)
+        {
+            ACUser result = null;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SQLiteCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT [login_name],[first_name],[last_name],[email] FROM [mlac_tbl_users] WHERE [id]=@pUserId;";
+                    cmd.Parameters.Add(new SQLiteParameter("@pUserId", pUserId));
+                    cnn.Open();
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result = new ACUser()
+                            {
+                                Id = pUserId,
+                                LoginName = reader.GetString(0),
+                                FirstName = reader.GetString(1),
+                                LastName = reader.GetString(2),
+                                Email = reader.GetString(3)
+                            };
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 }

@@ -75,6 +75,12 @@
     <Compile Include="TestCases\Roles.Designer.cs">
       <DependentUpon>Roles.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestCases\Users.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestCases\Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestCases\Validations_1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </Compile>
     <EmbeddedResource Include="TestCases\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestCases\Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestCases\Validations_1.resx">
       <DependentUpon>Validations_1.cs</DependentUpon>

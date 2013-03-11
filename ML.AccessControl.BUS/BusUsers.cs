@@ -7,12 +7,23 @@ using ML.AccessControl.BUS.Common;
 using System.Text.RegularExpressions;
 using ML.AccessControl.BUS.Common.Utils;
 using ML.AccessControl.Common.Enums;
+using ML.AccessControl.Common.Entities;
 
 namespace ML.AccessControl.BUS
 {
     public sealed class BusUsers : AbsBusBase
     {
         internal BusUsers(BusManager pBusManager, AbsManager pDBManager) : base(pBusManager, pDBManager) { }
+
+        /// <summary>
+        /// Load user information from the database.
+        /// </summary>
+        /// <param name="pUserId">User Id</param>
+        /// <returns>ACUser object if user record was found. Returns null if record not found.</returns>
+        public ACUser LoadUserInfo(int pUserId)
+        {
+            return _dbManager.Users.LoadUserInfo(pUserId);
+        }
 
         internal bool IsPersonNameValid(string pName, out MLAC_Error_Messages pErrorMessage)
         {

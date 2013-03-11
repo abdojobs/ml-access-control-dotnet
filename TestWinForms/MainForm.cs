@@ -24,7 +24,8 @@ namespace TestWinForms
                 {"Validations 1",typeof(Validations_1)},
                 {"Create Account",typeof(Create_Account)},
                 {"Authentication",typeof(Authentication)},
-                {"Roles",typeof(Roles)}
+                {"Roles",typeof(Roles)},
+                {"Users",typeof(Users)}
             };
 
         public MainForm()

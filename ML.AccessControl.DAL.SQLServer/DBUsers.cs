@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using ML.AccessControl.Common.Entities;
 
 namespace ML.AccessControl.DAL.SQLServer
 {
@@ -95,6 +96,37 @@ namespace ML.AccessControl.DAL.SQLServer
                 }
             }
             return bResult;
+        }
+
+        public override ACUser LoadUserInfo(int pUserId)
+        {
+            ACUser result = null;
+
+            using (ConnectionWrapper cnn = ((DBManager)_dbManager).GetConnection())
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "mlac_sp_usr_LoadUserInfo";
+                    cmd.Parameters.Add(new SqlParameter("@pUserId", pUserId));
+                    cnn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result = new ACUser()
+                            {
+                                Id = pUserId,
+                                LoginName = reader.GetString(0),
+                                FirstName = reader.GetString(1),
+                                LastName = reader.GetString(2),
+                                Email = reader.GetString(3)
+                            };
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 }
